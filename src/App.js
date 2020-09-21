@@ -1,12 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
+import Home from "./pages/home"
+
 function App() {
     return (
         <Router>
             <Switch>
                 <Route exact path="/">
-                    <p>netflix app</p>
+                    <Home />
                 </Route>
                 <Route path="/signin">
                     <p>Sign in Page</p>
