@@ -15,7 +15,7 @@ export const Inner = styled.div`
 `
 
 export const Pane = styled.div`
-    width: 100%;
+    width: 85%;
     padding: 0 3em;
     text-align: center;
 
