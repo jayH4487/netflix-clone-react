@@ -35,15 +35,27 @@ Accordion.Header = function AccordionHeader({ children, id, ...restProps }) {
     const {activeItem, setActiveItem} = useContext(activeItemContext)
     
     return (
-        <Header {...restProps} onClick={() => setActiveItem(activeItem === id ? -1 : id)}>{children}</Header>
+        <Header
+            {...restProps}
+            onClick={() => setActiveItem(activeItem === id ? -1 : id)}
+        >
+            {children}
+            {activeItem === id
+                ? <img src="/images/icons/close-slim.png" alt="close" />
+                : <img src="/images/icons/add.png" alt="open" />
+            }
+        </Header>
     )
 }
 
 Accordion.Body = function AccordionBody({ children, id, ...restProps }) {
 
     const {activeItem} = useContext(activeItemContext)
+    const isActive = activeItem === id
 
     return (
-        <Body {...restProps} active={activeItem === id}>{children}</Body>
+        isActive
+        ? <Body {...restProps} isActive="isActive">{children}</Body>
+        : null
     )
 }
