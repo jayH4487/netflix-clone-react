@@ -12,6 +12,7 @@ export const Container = styled.div`
 
     @media (min-width: 1000px) {
         flex-direction: row;
+        justify-content: center;
         padding: 0;
     }
 `
