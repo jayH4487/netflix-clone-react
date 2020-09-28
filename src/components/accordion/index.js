@@ -18,7 +18,7 @@ export default function Accordion({ children, ...restProps }) {
     )
 }
 
-Accordion.Item = ({ children, ...restProps }) => {
+Accordion.Item = function AccordionItem({ children, ...restProps }) {
     return (
         <Item {...restProps}>{children}</Item>
     )
