@@ -3,7 +3,6 @@ import { Link as ReachRouterLink } from "react-router-dom"
 
 import { Background, Container, Logo, ButtonLink } from "./styles/header"
 
-
 export default function Header({ bg=true, children, ...restProps }) {
     return (
         bg ? <Background {...restProps}>{children}</Background> : children
@@ -24,8 +23,8 @@ Header.Logo = ({ to, ...restProps }) => {
     )
 }
 
-Header.ButtonLink = ({ children, ...restProps }) => {
+Header.ButtonLink = ({ showSigninLink, children, ...restProps }) => {
     return (
-        <ButtonLink {...restProps}>{children}</ButtonLink>
+        showSigninLink ? <ButtonLink {...restProps}>{children}</ButtonLink> : null
     )
 }
