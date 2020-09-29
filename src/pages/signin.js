@@ -2,7 +2,8 @@ import React, { useState } from "react"
 
 import Form from "../components/form"
 import * as ROUTES from "../constants/routes"
-import { HeaderContainer, FooterContainer } from "../containers"
+import { HeaderContainer } from "../containers/header"
+import { FooterContainer } from "../containers/footer"
 
 export default function Signin() {
 

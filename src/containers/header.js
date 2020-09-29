@@ -3,7 +3,7 @@ import React from "react"
 import { Header } from "../components"
 import * as ROUTES from "../constants/routes"
 
-export default function HeaderContainer({ showSigninLink=true, children }) {
+export function HeaderContainer({ showSigninLink=true, children }) {
     return (
         <Header>
             <Header.Container>
