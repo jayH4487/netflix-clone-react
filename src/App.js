@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import Home from "./pages/home"
 import Signin from "./pages/signin"
+import Signup from "./pages/signup"
 import * as ROUTES from "./constants/routes"
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
                     <Signin />
                 </Route>
                 <Route path={ROUTES.SIGN_UP}>
-                    <p>Sign up Page</p>
+                    <Signup />
                 </Route>
                 <Route path={ROUTES.BROWSE}>
                     <p>Browse Page</p>
