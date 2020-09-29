@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 
-import { HeaderContainer } from "../containers/header"
+import { HeaderContainer, FooterContainer } from "../containers"
 import Form from "../components/form"
-import { FooterContainer } from "../containers/footer"
 import * as ROUTES from "../constants/routes"
 
 export default function Signup() {

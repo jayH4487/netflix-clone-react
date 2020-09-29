@@ -1,9 +1,9 @@
 import React from "react"
 
-import Header from "../components/header"
+import { Header } from "../components"
 import * as ROUTES from "../constants/routes"
 
-export function HeaderContainer({ showSigninLink=true, children }) {
+export default function HeaderContainer({ showSigninLink=true, children }) {
     return (
         <Header>
             <Header.Container>
