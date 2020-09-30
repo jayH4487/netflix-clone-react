@@ -4,8 +4,8 @@ import { Link as ReachRouterLink } from "react-router-dom"
 
 export const Background = styled.div`
     display: flex;
-    padding: 1em 2.5em 2em;
     flex-direction: column;
+    padding: 1em 2.5em 2em;
     background: url(${({ src }) => src ? `/images/misc/${src}.jpg` : "/images/misc/home-bg.jpg"}) top left /cover no-repeat;
 
     @media (max-width: 1100px) {
@@ -15,17 +15,22 @@ export const Background = styled.div`
 
 export const Container = styled.div`
     display: flex;
-    height: 64px;
     justify-content: space-between;
     align-items: center;
+    height: 64px;
+    margin: 0 1.5em;
+    padding: 1em 0;
+
+    @media (min-width: 1000px) {
+        margin: 0 3.5em;
+    }
 `
 
 export const Logo = styled.img`
     height: 32px;
     width: 108px;
-    margin-right: 40px;
 
-    @media (min-width: 1450px) {
+    @media (min-width: 1000px) {
         height: 45px;
         width: 167px;
     }
