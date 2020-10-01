@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { useHistory } from "react-router-dom"
 
 import Form from "../components/form"
 import * as ROUTES from "../constants/routes"
 import { HeaderContainer } from "../containers/header"
 import { FooterContainer } from "../containers/footer"
+import { FirebaseContext } from "../context/firebase"
+
 
 export default function Signin() {
 
@@ -11,11 +14,28 @@ export default function Signin() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const isInputInvalid = (email, password) => email === "" || password === ""
+    const { firebase } = useContext(FirebaseContext)
+    const history = useHistory()
+
+    const isInputInvalid = email === "" || password === ""
 
     const handleSignin = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
+        (async () => {
+            try {
+                const success = await firebase.auth().signInWithEmailAndPassword(email, password)
+
+                setEmail("")
+                setPassword("")
+                setError("")
+
+                history.push(ROUTES.BROWSE)
+
+            } catch (error) {
+                setError(error.message)
+            }
+        })()
     }
 
     return (
@@ -42,7 +62,7 @@ export default function Signin() {
                             onChange={({ target }) => setPassword(target.value)}
                         />
                         <Form.Button
-                            disabled={isInputInvalid(email, password)}
+                            disabled={isInputInvalid}
                         >
                             Sign In
                         </Form.Button>

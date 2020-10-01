@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
+import { useHistory } from "react-router-dom"
 
 import { HeaderContainer } from "../containers/header"
 import { FooterContainer } from "../containers/footer"
 import Form from "../components/form"
 import * as ROUTES from "../constants/routes"
+import { FirebaseContext } from '../context/firebase'
 
 export default function Signup() {
 
@@ -12,11 +14,32 @@ export default function Signup() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const isInputInvalid = (email, password) => firstName === "" || email === "" || password === ""
+    const { firebase } = useContext(FirebaseContext)
+    const history = useHistory()
+
+    const isInputInvalid = firstName === "" || email === "" || password === ""
 
     const handleSignup = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
+        (async () => {
+            try {
+                const currentUser = await firebase.auth().createUserWithEmailAndPassword(email, password)
+
+                const success = await currentUser.user.updateProfile({
+                    displayName: firstName,
+                    photoURL: Math.ceil(Math.random() * 5)
+                })
+
+                setEmail("")
+                setPassword("")
+                setError("")
+                history.push(ROUTES.BROWSE)
+
+            } catch (error) {
+                setError(error.message)
+            }
+        })()
     }
 
     return (
@@ -32,7 +55,7 @@ export default function Signup() {
                             type="text"
                             name="firstName"
                             value={firstName}
-                            onChange={({ target }) => setEmail(target.value)}
+                            onChange={({ target }) => setFirstName(target.value)}
                         />
                         <Form.Input
                             placeholder="Email"
@@ -50,7 +73,7 @@ export default function Signup() {
                             onChange={({ target }) => setPassword(target.value)}
                         />
                         <Form.Button
-                            disabled={isInputInvalid(email, password)}
+                            disabled={isInputInvalid}
                         >
                             Sign Up
                         </Form.Button>
