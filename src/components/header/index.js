@@ -1,7 +1,17 @@
 import React from "react"
 import { Link as ReachRouterLink } from "react-router-dom"
 
-import { Background, Container, Logo, ButtonLink } from "./styles/header"
+import { Background,
+    Container,
+    Group,
+    Logo,
+    ButtonLink,
+    Link,
+    Text,
+    Feature,
+    FeatureCallOut,
+    PlayButton
+} from "./styles/header"
 
 export default function Header({ bg=true, children, ...restProps }) {
     return (
@@ -12,6 +22,12 @@ export default function Header({ bg=true, children, ...restProps }) {
 Header.Container = ({ children, ...restProps }) => {
     return (
         <Container {...restProps}>{children}</Container>
+    )
+}
+
+Header.Group = ({ children, ...restProps }) => {
+    return (
+        <Group {...restProps}>{children}</Group>
     )
 }
 
@@ -26,5 +42,35 @@ Header.Logo = ({ to, ...restProps }) => {
 Header.ButtonLink = ({ showSigninLink, children, ...restProps }) => {
     return (
         showSigninLink ? <ButtonLink {...restProps}>{children}</ButtonLink> : null
+    )
+}
+
+Header.Link = ({ children, ...restProps }) => {
+    return (
+        <Link {...restProps}>{children}</Link>
+    )
+}
+
+Header.Feature = ({ children, ...restProps }) => {
+    return (
+        <Feature {...restProps}>{children}</Feature>
+    )
+}
+
+Header.FeatureCallOut = ({ children, ...restProps }) => {
+    return (
+        <FeatureCallOut {...restProps}>{children}</FeatureCallOut>
+    )
+}
+
+Header.Text = ({ children, ...restProps }) => {
+    return (
+        <Text {...restProps}>{children}</Text>
+    )
+}
+
+Header.PlayButton = ({ children, ...restProps }) => {
+    return (
+        <PlayButton {...restProps}>{children}</PlayButton>
     )
 }

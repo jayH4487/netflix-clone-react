@@ -26,6 +26,13 @@ export const Container = styled.div`
     }
 `
 
+export const Group = styled.div`
+    display: grid;
+    grid-template-columns: auto repeat(2, 60px);
+    align-items: center;
+    gap: 2em;
+`
+
 export const Logo = styled.img`
     height: 32px;
     width: 108px;
@@ -49,5 +56,62 @@ export const ButtonLink = styled(ReachRouterLink)`
     
     &:hover {
         background: #f40612;
+    }
+`
+
+export const Text = styled.p`
+    color: white;
+    font-size: 1.375rem;
+    line-height: normal;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+`
+
+export const Link = styled.p`
+    color: white;
+    font-weight: ${({ active }) => active ? "bold" : "normal"};
+    cursor: pointer;
+
+    &:hover {
+        font-weight: bold;
+    }
+`
+
+export const Feature = styled(Container)`
+    display: none;
+
+    @media (min-width: 1100px) {
+        display: grid;
+        align-items: normal;
+        width: 50%;
+        padding: 150px 0 500px 0;
+    }
+`
+
+export const FeatureCallOut = styled.h2`
+    color: white;
+    font-size: 3.125rem;
+    line-height: normal;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+    margin: 0;
+`
+
+export const PlayButton = styled.button`
+    box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
+    background: #e6e6e6;
+    color: black;
+    border-width: 0;
+    padding: 0.625em 1.25em;
+    border-radius: 5px;
+    max-width: 130px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-top: 0.625em;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    
+    &:hover {
+        background: #ff1e1e;
+        color: white;
     }
 `
