@@ -28,7 +28,7 @@ export const Container = styled.div`
 
 export const Group = styled.div`
     display: grid;
-    grid-template-columns: auto repeat(2, 60px);
+    grid-auto-flow: column;
     align-items: center;
     gap: 2em;
 `
@@ -114,4 +114,38 @@ export const PlayButton = styled.button`
         background: #ff1e1e;
         color: white;
     }
+`
+
+export const Search = styled.div`
+    display: none;
+
+    @media (min-width: 800px) {
+        display: flex;
+        align-items: center;
+    }
+`
+
+export const SearchIcon = styled.button`
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+
+    img {
+        filter: brightness(0) invert(1);
+        width: 1em;
+    }
+`
+
+export const SearchInput = styled.input`
+    background: #44444459;
+    color: white;
+    border: 1px solid white;
+    height: 30px;
+    
+    transition: width 0.5;
+    margin-left: ${({ active }) => active ? "10px" : "0"};
+    padding: ${({ active }) => active ? "0 10px" : "0"};
+    border: ${({ active }) => active ? "1px solid white" : "0"};
+    opacity: ${({ active }) => active ? "1" : "0"};
+    width: ${({ active }) => active ? "200px" : "0"};
 `
