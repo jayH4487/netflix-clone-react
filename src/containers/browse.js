@@ -26,6 +26,7 @@ export function BrowseContainer() {
             ? <>
                 <Header src="joker1" dontShowOnSmallViewPort>
                     <Header.Container>
+
                         <Header.Group>
                             <Header.Logo to={ROUTES.HOME} src="/images/misc/logo.svg" alt="netflix"/>
                             <Header.Link
@@ -41,10 +42,28 @@ export function BrowseContainer() {
                                 Films
                             </Header.Link>
                         </Header.Group>
+
                         <Header.Group>
+
                             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
+                            <Header.Profile>
+                                <Header.Picture src={user.photoURL}/>
+                                <Header.DropDown>
+                                    <Header.Group>
+                                        <Header.Picture src={user.photoURL} />
+                                        <Header.Link>{user.displayName}</Header.Link>
+                                    </Header.Group>
+                                    <Header.Group>
+                                        <Header.Link onClick={() => firebase.auth().signOut}>Sign out</Header.Link>
+                                    </Header.Group>
+                                </Header.DropDown>
+                            </Header.Profile>
+
                         </Header.Group>
+
                     </Header.Container>
+
                     <Header.Feature>
                         <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
                         <Header.Text>

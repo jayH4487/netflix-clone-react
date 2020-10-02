@@ -149,3 +149,56 @@ export const SearchInput = styled.input`
     opacity: ${({ active }) => active ? "1" : "0"};
     width: ${({ active }) => active ? "200px" : "0"};
 `
+
+export const Picture = styled.button`
+    background: url(${({ src }) => src});
+    background-size: contain;
+    border: 0;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+`
+
+export const DropDown = styled.div`
+    display: none;
+    background: black;
+    padding: 0.625em;
+    width: 100px;
+    position: absolute;
+    top: 25px;
+    right: 0px;
+
+    ${Group}:last-of-type ${Link} {
+        cursor: pointer;
+    }
+    
+    ${Group} {
+        margin-bottom: 10px;
+        
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+        
+        ${Link}, ${Picture} {
+            cursor: default;
+        }
+    }
+    
+    button {
+        margin-right: 10px;
+    }
+    
+    p {
+        font-size: 12px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+`
+
+export const Profile = styled.div`
+    position: relative;
+
+    &:hover > ${DropDown} {
+        display: grid;
+    }
+`
