@@ -54,8 +54,6 @@ Accordion.Body = function AccordionBody({ children, id, ...restProps }) {
     const isActive = activeItem === id
 
     return (
-        isActive
-        ? <Body {...restProps} isActive="isActive">{children}</Body>
-        : null
+        <Body {...restProps} isActive={isActive}>{children}</Body>
     )
 }

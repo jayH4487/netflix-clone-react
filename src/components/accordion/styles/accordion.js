@@ -57,9 +57,19 @@ export const Header = styled.div`
 `
 
 export const Body = styled.div`
-    line-height: 1.4;
     color: white;
     background: #303030;
     padding: 0.8em 2.2em;
     user-select: none;
+    overflow: hidden;
+    height: auto;
+    max-height: ${({ isActive }) => isActive ? "min-content" : "0"};
+    padding: ${({ isActive }) => isActive ? "0.8em 2.2em" : "0 2.2em"};
+    transition: all 0.25s cubic-bezier(0.5, 0, 0.1, 1);
+
+
+    @media (min-width: 600px) {
+        font-size: 1.625rem;
+        line-height: 1.4;
+    }
 `
