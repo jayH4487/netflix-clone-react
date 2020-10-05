@@ -6,6 +6,7 @@ import { FirebaseContext } from "../context/firebase"
 import { SelectProfileContainer } from "./profiles"
 import { FooterContainer } from "../containers/footer"
 
+
 export function BrowseContainer() {
 
     const [profile, setProfile] = useState({})
@@ -25,12 +26,13 @@ export function BrowseContainer() {
             setLoading(false)
         }, 3000)
     }, [user])
+    
 
     return (
-        profile.displayName
-        // user.displayName
+        //profile.displayName
+         user.displayName
             ? <>
-                {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
+                {/* {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />} */}
                 <Header src="joker1" dontShowOnSmallViewPort>
                     <Header.Container>
 
