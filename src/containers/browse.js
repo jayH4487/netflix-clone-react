@@ -23,6 +23,8 @@ export function BrowseContainer({ slides }) {
         photoURL: "1"
     }
 
+    // const user = firebase.auth().currentUser
+
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
@@ -47,10 +49,10 @@ export function BrowseContainer({ slides }) {
     
 
     return (
-        //profile.displayName
-         user.displayName
+        profile.displayName
+        //  user.displayName
             ? <>
-                {/* {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />} */}
+                {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
                 <Header src="joker1" dontShowOnSmallViewPort>
                     <Header.Container>
 
@@ -82,7 +84,7 @@ export function BrowseContainer({ slides }) {
                                         <Header.Link>{user.displayName}</Header.Link>
                                     </Header.Group>
                                     <Header.Group>
-                                        <Header.Link onClick={() => firebase.auth().signOut}>Sign out</Header.Link>
+                                        <Header.Link onClick={() => firebase.auth().signOut()}>Sign out</Header.Link>
                                     </Header.Group>
                                 </Header.DropDown>
                             </Header.Profile>

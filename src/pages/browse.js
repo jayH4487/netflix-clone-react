@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 
 import { BrowseContainer } from "../containers/browse"
 import { useContent } from "../hooks"
