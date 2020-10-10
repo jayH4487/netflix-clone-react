@@ -8,7 +8,7 @@ import { SelectProfileContainer } from "./profiles"
 import { FooterContainer } from "../containers/footer"
 
 
-export function BrowseContainer({ slides }) {
+export function BrowseContainer({ user, slides }) {
 
     const [profile, setProfile] = useState({})
     const [category, setCategory] = useState("series")
@@ -17,19 +17,14 @@ export function BrowseContainer({ slides }) {
     const [slideRows, setSlideRows] = useState([])
 
     const { firebase } = useContext(FirebaseContext)
-
-    const user = {
-        displayName: "user1",
-        photoURL: "1"
-    }
-
-    // const user = firebase.auth().currentUser
-
+    
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false)
-        }, 3000)
-    }, [user])
+        if (profile.displayName !== undefined) {
+            setTimeout(() => {
+                setLoading(false)
+            }, 3000)
+        }
+    }, [profile])
 
     useEffect(() => {
         setSlideRows(slides[category])
@@ -50,9 +45,8 @@ export function BrowseContainer({ slides }) {
 
     return (
         profile.displayName
-        //  user.displayName
             ? <>
-                {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
+                {loading ? <Loading src={profile.photoURL} /> : <Loading.ReleaseBody />}
                 <Header src="joker1" dontShowOnSmallViewPort>
                     <Header.Container>
 

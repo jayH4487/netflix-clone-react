@@ -31,12 +31,11 @@ export default function Signup() {
                     photoURL: Math.ceil(Math.random() * 5)
                 })
 
+                history.push(ROUTES.BROWSE)
+                
+            } catch (error) {
                 setEmail("")
                 setPassword("")
-                setError("")
-                history.push(ROUTES.BROWSE)
-
-            } catch (error) {
                 setError(error.message)
             }
         })()

@@ -5,7 +5,7 @@ import { useContent } from "../hooks"
 import { selectionMap } from "../utils"
 
 
-export default function Browse() {
+export default function Browse({ user }) {
 
     const { series } = useContent("series")
     const { films } = useContent("films")
@@ -13,7 +13,7 @@ export default function Browse() {
 
     return (
         <>
-            <BrowseContainer slides={slides}/>
+            <BrowseContainer user={user} slides={slides}/>
         </>
     )
 }

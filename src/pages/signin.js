@@ -25,14 +25,12 @@ export default function Signin() {
         (async () => {
             try {
                 const success = await firebase.auth().signInWithEmailAndPassword(email, password)
-
+                
+                history.push(ROUTES.BROWSE)
+                
+            } catch (error) {
                 setEmail("")
                 setPassword("")
-                setError("")
-
-                history.push(ROUTES.BROWSE)
-
-            } catch (error) {
                 setError(error.message)
             }
         })()

@@ -42,9 +42,9 @@ function App() {
                     path={ROUTES.BROWSE}
                     user={user}
                 >
-                    <Browse />
+                    <Browse user={user}/>
                 </ProtectedRoute>
-                
+
             </Switch>
         </Router>
     )
