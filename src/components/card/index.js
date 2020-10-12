@@ -5,6 +5,7 @@ import {
     Group,
     Title,
     Entities,
+    EntityButton,
     Item,
     Image,
     Meta,
@@ -42,13 +43,39 @@ Card.Title = ({ children, ...restProps }) => {
     return <Title {...restProps}>{children}</Title>
 }
 
-Card.Entities = ({ children, ...restProps }) => {
-    return <Entities {...restProps}>{children}</Entities>
+const EntityContext = createContext()
+
+Card.Entities = function CardEntities({ children, ...restProps }) {
+
+    const [offset, setOffset] = useState(0)
+
+    return (
+        <EntityContext.Provider value={{ offset, setOffset }}>
+            <Entities {...restProps}>{children}</Entities>
+        </EntityContext.Provider>
+    )
+}
+
+Card.EntityButton = function CardEntityButton({ direction, noOfItems, children, ...restProps }) {
+
+    const { offset, setOffset } = useContext(EntityContext)
+
+    return (
+        <EntityButton
+            onClick={() => setOffset(prev => prev + (direction === "left" ? -1 : 1))}
+            disabled={offset > -1 && direction === "right" || offset < -noOfItems + 2 && direction === "left"}
+            direction={direction}
+            {...restProps}
+        >
+            {children}
+        </EntityButton>
+    )
 }
 
 Card.Item = function CardItem({ item, children, ...restProps }) {
 
-    const { setShowFeature, setItemFeature, setCategory } = useContext(FeatureContext)
+    const { setShowFeature, setItemFeature } = useContext(FeatureContext)
+    const { offset } = useContext(EntityContext)
 
     return (
         <Item
@@ -56,6 +83,7 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
                 setItemFeature(item)
                 setShowFeature(true)
             }}
+            offset={offset}
             {...restProps}
         >
             {children}

@@ -24,17 +24,36 @@ export const Title = styled.p`
 `
 
 export const Entities = styled.div`
-    display: flex;
+    margin: 0 1.875em;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    overflow-x: hidden;
+
+
+    @media (min-width: 1000px) {
+        margin: 0 3.125em;
+    }
+`
+
+export const EntityButton = styled.button`
+    position: absolute;
+    z-index: 99;
+    cursor: pointer;
+    ${({ direction }) => `${direction}: 0`};
 `
 
 export const Image = styled.img`
     border: 0;
-    width: 100%;
-    max-width: 305px;
+    width: 150px;
     height: auto;
     padding: 0;
     margin: 0;
     cursor: pointer;
+
+    @media (min-width: 1000px) {
+        width: 250px;
+    }
 
 `
 
@@ -67,15 +86,15 @@ export const Text = styled.p`
 export const Item = styled.div`
     display: flex;
     flex-direction: column;
-    margin-right: 0.3em;
     position: relative;
     cursor: pointer;
+    transform: translateX(${({ offset }) => `${offset}00%`});
     transition: transform 0.2s;
 
-    &:hover {
+    /* &:hover {
         transform: scale(1.3);
         z-index: 99;
-    }
+    } */
 
     @media (min-width: 1000px) {
         &:hover ${Meta},
@@ -86,31 +105,15 @@ export const Item = styled.div`
         }
     }
 
-    &:first-of-type {
-        margin-left: 1.875em;
-
-        @media (min-width: 1000px) {
-            margin-left: 3.125em;
-        }
-    }
-
-    &:last-of-type {
-        margin-right: 1.875em;
-
-        @media (min-width: 1000px) {
-            margin-right: 3.125em;
-        }
-    }
 `
 
 export const Content = styled.div`
-    margin: 1.875em;
-    max-width: none;
+    margin: 1.875em 0;
+    max-width: 67%;
     line-height: normal;
 
     @media (min-width: 1000px) {
-        margin: 3.5em;
-        max-width: 500px;
+        margin: 3.5em 0;
     }
 `
 
@@ -132,6 +135,7 @@ export const FeatureText = styled.p`
 `
 
 export const Feature = styled.div`
+    margin: 0 1.875em;
     display: flex;
     flex-direction: row;
     position: relative;
@@ -144,6 +148,7 @@ export const Feature = styled.div`
     
 
     @media (min-width: 1000px) {
+        margin: 0 3.125em;
         height: 360px;
         background-size: contain;
 
@@ -183,3 +188,4 @@ export const Maturity = styled.div`
     padding: 0.5em;
     margin-right: 10px;
 `
+

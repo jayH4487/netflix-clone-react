@@ -22,7 +22,7 @@ export function BrowseContainer({ user, slides }) {
         if (profile.displayName !== undefined) {
             setTimeout(() => {
                 setLoading(false)
-            }, 3000)
+            }, 1000)
         }
     }, [profile])
 
@@ -101,10 +101,16 @@ export function BrowseContainer({ user, slides }) {
                         <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
                             <Card.Title>{slideItem.title}</Card.Title>
                             <Card.Entities>
+                                <Card.EntityButton
+                                    direction="left"
+                                    noOfItems={slideItem.data.length}
+                                    >
+                                    {"\u2039"}
+                                </Card.EntityButton>
                                 {slideItem.data.map(item => (
                                     <Card.Item
-                                        key={item.docId}
-                                        item={item}
+                                    key={item.docId}
+                                    item={item}
                                     >
                                         <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}/>
                                         <Card.Meta>
@@ -113,6 +119,12 @@ export function BrowseContainer({ user, slides }) {
                                         </Card.Meta>
                                     </Card.Item>
                                 ))}
+                                <Card.EntityButton
+                                    direction="right"
+                                    noOfItems={slideItem.data.length}
+                                >
+                                    {"\u203a"}
+                                </Card.EntityButton>
                             </Card.Entities>
 
                             <Card.Feature category={category}>
