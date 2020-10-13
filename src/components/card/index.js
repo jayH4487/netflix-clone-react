@@ -62,8 +62,8 @@ Card.EntityButton = function CardEntityButton({ direction, noOfItems, children, 
 
     return (
         <EntityButton
-            onClick={() => setOffset(prev => prev + (direction === "left" ? -1 : 1))}
-            disabled={offset > -1 && direction === "right" || offset < -noOfItems + 2 && direction === "left"}
+            onClick={() => setOffset(prev => prev + (direction === "right" ? -1 : 1))}
+            disabled={offset > -1 && direction === "left" || offset < -noOfItems + 2 && direction === "right"}
             direction={direction}
             {...restProps}
         >

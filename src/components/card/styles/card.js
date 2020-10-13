@@ -6,6 +6,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 3.125em;
+    position: relative;
 `
 
 export const Group = styled.div`
@@ -30,17 +31,38 @@ export const Entities = styled.div`
     justify-content: start;
     overflow-x: hidden;
 
-
     @media (min-width: 1000px) {
         margin: 0 3.125em;
     }
 `
 
 export const EntityButton = styled.button`
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: grid;
+    align-content: end;
+    padding: 0;
+    color: ${({ disabled }) => disabled ? "transparent" : "white"};
+    background: ${({ disabled }) => disabled ? "transparent" : "black"};
+    border: 0;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
     position: absolute;
     z-index: 99;
     cursor: pointer;
-    ${({ direction }) => `${direction}: 0`};
+    top: 50%;
+    ${({ direction }) => `${direction}: 0.7em`};
+
+    &:focus {
+        outline: 0;
+    }
+
+    @media (min-width: 1000px) {
+        ${({ direction }) => `${direction}: 1em`};
+        font-size: 2rem;
+    }
 `
 
 export const Image = styled.img`
