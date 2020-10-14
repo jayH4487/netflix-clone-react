@@ -45,23 +45,26 @@ export const EntityButton = styled.button`
     padding: 0;
     color: ${({ disabled }) => disabled ? "transparent" : "white"};
     background: ${({ disabled }) => disabled ? "transparent" : "black"};
+    cursor: ${({ disabled }) => disabled ? "default" : "pointer"};
     border: 0;
     border-radius: 50%;
+    box-shadow: 0px 0px 5px 1px rgba(255,255,255,0.3);
+    box-shadow: ${({ disabled }) => disabled ? "none" : "0px 0px 5px 1px rgba(255,255,255,0.3)"};
     width: 1em;
     height: 1em;
     position: absolute;
-    z-index: 99;
-    cursor: pointer;
-    top: 50%;
+    top: calc(30px + 42px - 12px);
     ${({ direction }) => `${direction}: 0.7em`};
+    z-index: 99;
 
     &:focus {
         outline: 0;
     }
 
     @media (min-width: 1000px) {
-        ${({ direction }) => `${direction}: 1em`};
         font-size: 2rem;
+        ${({ direction }) => `${direction}: 1em`};
+        top: calc(30px + 70px - 16px);
     }
 `
 
