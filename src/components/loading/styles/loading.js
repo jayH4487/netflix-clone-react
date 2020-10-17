@@ -24,7 +24,7 @@ export const Spinner = styled.div`
         width: 150px;
         height: 150px;
         position: absolute;
-        background-image: url(/images/misc/spinner.png);
+        background-image: url(${`${process.env.PUBLIC_URL}/images/misc/spinner.png`});
         background-size: contain;
         background-repeat: no-repeat;
         top: 50%;

@@ -20,7 +20,7 @@ Profiles.User = ({ children, ...restProps }) => {
 }
 
 Profiles.Picture = ({ src, ...restProps }) => {
-    return <Picture {...restProps} src={src ? `/images/users/${src}.png` : `/images/misc/loading.gif`} />
+    return <Picture {...restProps} src={src ? `${process.env.PUBLIC_URL}/images/users/${src}.png` : `${process.env.PUBLIC_URL}/images/misc/loading.gif`} />
 }
 
 Profiles.Name = ({ children, ...restProps }) => {

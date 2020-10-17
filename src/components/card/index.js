@@ -114,13 +114,13 @@ Card.Feature = function CardFeature({ category, children, ...restProps }) {
     return showFeature
         ? (
             <Feature
-                src={`/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}
+                src={`${process.env.PUBLIC_URL}/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}
                 {...restProps}>
                 <Content>
                     <FeatureTitle>{itemFeature.title}</FeatureTitle>
                     <FeatureText>{itemFeature.description}</FeatureText>
                     <FeatureClose onClick={() => {setShowFeature(false)}}>
-                        <img src="/images/icons/close.png" alt="close" />
+                        <img src={`${process.env.PUBLIC_URL}/images/icons/close.png`} alt="close" />
                     </FeatureClose>
 
                     <Group margin="30px 0" flexDirection="row" alignItems="center">

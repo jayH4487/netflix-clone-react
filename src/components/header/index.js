@@ -88,7 +88,7 @@ Header.Search = function HeaderSearch({ searchTerm, setSearchTerm, ...restProps 
     return (
         <Search {...restProps}>
             <SearchIcon onClick={() => setSearchActive(!searchActive)}>
-                <img src="/images/icons/search.png" alt="search" />
+                <img src={`${process.env.PUBLIC_URL}/images/icons/search.png`} alt="search" />
             </SearchIcon>
             <SearchInput
                 value={searchTerm}
@@ -108,7 +108,7 @@ Header.Profile = ({ children, ...restProps }) => {
 
 Header.Picture = ({ src, ...restProps }) => {
     return (
-        <Picture {...restProps} src={`/images/users/${src}.png`} />
+        <Picture {...restProps} src={`${process.env.PUBLIC_URL}/images/users/${src}.png`} />
     )
 }
 

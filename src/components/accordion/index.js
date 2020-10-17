@@ -41,8 +41,8 @@ Accordion.Header = function AccordionHeader({ children, id, ...restProps }) {
         >
             {children}
             {activeItem === id
-                ? <img src="/images/icons/close-slim.png" alt="close" />
-                : <img src="/images/icons/add.png" alt="open" />
+                ? <img src={`${process.env.PUBLIC_URL}/images/icons/close-slim.png`} alt="close" />
+                : <img src={`${process.env.PUBLIC_URL}/images/icons/add.png`} alt="open" />
             }
         </Header>
     )

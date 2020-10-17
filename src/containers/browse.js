@@ -51,7 +51,7 @@ export function BrowseContainer({ user, slides }) {
                     <Header.Container>
 
                         <Header.Group>
-                            <Header.Logo to={ROUTES.HOME} src="/images/misc/logo.svg" alt="netflix"/>
+                            <Header.Logo to={ROUTES.HOME} src={`${process.env.PUBLIC_URL}/images/misc/logo.svg`} alt="netflix"/>
                             <Header.Link
                                 active={category === "series"}
                                 onClick={() => setCategory("series")}
@@ -116,7 +116,7 @@ export function BrowseContainer({ user, slides }) {
                                     key={item.docId}
                                     item={item}
                                     >
-                                        <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`}/>
+                                        <Card.Image src={`${process.env.PUBLIC_URL}/images/${category}/${item.genre}/${item.slug}/small.jpg`}/>
                                         <Card.Meta>
                                             <Card.SubTitle>{item.title}</Card.SubTitle>
                                             <Card.Text>{item.description}</Card.Text>

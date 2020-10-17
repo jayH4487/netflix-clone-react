@@ -11,7 +11,7 @@ function App() {
     const { user } = useAuthListener()
 
     return (
-        <Router>
+        <Router basename={ process.env.PUBLIC_URL }>
             <Switch>
                 
                 <IsUserRedirect
