@@ -55,7 +55,7 @@ export const EntityButton = styled.button`
     position: absolute;
     top: calc(30px + 42px - 12px);
     ${({ direction }) => `${direction}: 0.7em`};
-    z-index: 99;
+    z-index: 1;
 
     &:focus {
         outline: 0;

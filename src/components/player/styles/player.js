@@ -17,6 +17,7 @@ export const Overlay = styled.div`
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     padding: 0 20px;
+    z-index: 2;
 `
 
 export const Inner = styled.div`
