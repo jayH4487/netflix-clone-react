@@ -1,5 +1,7 @@
 # Netflix Clone
 
+[Live demo](https://jayh4487.github.io/netflix-clone-react/)
+
 [Scrimba - Building a Netflix clone](https://scrimba.com/learn/frontend/building-a-netflix-clone-module-intro-c4MybkTL)
 
 Course Tutor: Karl Hadwen
