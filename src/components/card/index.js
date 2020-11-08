@@ -25,18 +25,26 @@ const FeatureContext = createContext()
 
 export default function Card({ children, ...restProps }) {
 
-    const [showFeature, setShowFeature] = useState(false)
     const [itemFeature, setItemFeature] = useState(false)
 
     return (
-        <FeatureContext.Provider value={{ showFeature, setShowFeature, itemFeature, setItemFeature }}>
+        <FeatureContext.Provider value={{ itemFeature, setItemFeature }}>
             <Container {...restProps}>{children}</Container>
         </FeatureContext.Provider>
     )
 }
 
-Card.Group = ({ children, ...restProps }) => {
-    return <Group {...restProps}>{children}</Group>
+const ShowFeatureContext = createContext()
+
+Card.Group = function CardGroup({ children, ...restProps }) {
+
+    const [showFeature, setShowFeature] = useState("")
+
+    return (
+        <ShowFeatureContext.Provider value={{ showFeature, setShowFeature }}>
+            <Group {...restProps}>{children}</Group>
+        </ShowFeatureContext.Provider>
+    )
 }
 
 Card.Title = ({ children, ...restProps }) => {
@@ -72,16 +80,17 @@ Card.EntityButton = function CardEntityButton({ direction, noOfItems, children, 
     )
 }
 
-Card.Item = function CardItem({ item, children, ...restProps }) {
+Card.Item = function CardItem({ genre, item, children, ...restProps }) {
 
-    const { setShowFeature, setItemFeature } = useContext(FeatureContext)
+    const { setItemFeature } = useContext(FeatureContext)
+    const { setShowFeature } = useContext(ShowFeatureContext)
     const { offset } = useContext(EntityContext)
 
     return (
         <Item
             onClick={() => {
                 setItemFeature(item)
-                setShowFeature(true)
+                setShowFeature(genre)
             }}
             offset={offset}
             {...restProps}
@@ -107,11 +116,12 @@ Card.Text = ({ children, ...restProps }) => {
     return <Text {...restProps}>{children}</Text>
 }
 
-Card.Feature = function CardFeature({ category, children, ...restProps }) {
+Card.Feature = function CardFeature({ category, genre, children, ...restProps }) {
 
-    const { showFeature, itemFeature, setShowFeature } = useContext(FeatureContext)
-
-    return showFeature
+    const { itemFeature } = useContext(FeatureContext)
+    const { showFeature, setShowFeature } = useContext(ShowFeatureContext)
+    
+    return showFeature === genre
         ? (
             <Feature
                 src={`${process.env.PUBLIC_URL}/images/${category}/${itemFeature.genre}/${itemFeature.slug}/large.jpg`}
@@ -119,7 +129,7 @@ Card.Feature = function CardFeature({ category, children, ...restProps }) {
                 <Content>
                     <FeatureTitle>{itemFeature.title}</FeatureTitle>
                     <FeatureText>{itemFeature.description}</FeatureText>
-                    <FeatureClose onClick={() => {setShowFeature(false)}}>
+                    <FeatureClose onClick={() => {setShowFeature("")}}>
                         <img src={`${process.env.PUBLIC_URL}/images/icons/close.png`} alt="close" />
                     </FeatureClose>
 
