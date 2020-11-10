@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useState, useRef, useEffect } from "react"
 
-import { Container, Text, Input, Button } from "./styles/opt-form"
+import { Container, Text, Input, Button, Wrapper, Label } from "./styles/opt-form"
 
 
 export default function OptForm({ children, ...restProps }) {
@@ -13,8 +13,33 @@ OptForm.Text = ({ children, ...restProps }) => {
     return <Text {...restProps}>{children}</Text>
 }
 
-OptForm.Input = ({ ...restProps }) => {
-    return <Input {...restProps} />
+OptForm.Input = function OptFormInput({ placeLabel, ...restProps }) {
+    
+    const [isLabelSmall, setIsLabelSmall] = useState(false)
+    const inputRef = useRef()
+
+    useEffect(() => {
+        if (isLabelSmall) {
+            inputRef.current.focus()
+        }
+    }, [isLabelSmall])
+
+    return (
+        <Wrapper>
+            <Input
+                ref={inputRef}
+                onFocus={() => setIsLabelSmall(true)}
+                onBlur={() => setIsLabelSmall(false)}
+                {...restProps}
+            />
+            <Label
+                onClick={() => setIsLabelSmall(true)}
+                isLabelSmall={isLabelSmall}
+            >
+                {placeLabel}
+            </Label>
+        </Wrapper>
+        )
 }
 
 OptForm.Button = ({ children, ...restProps }) => {

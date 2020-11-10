@@ -27,11 +27,17 @@ export const Text = styled.p`
         font-size: 1.25rem;
     }
 `
+
+export const Wrapper = styled.div`
+    position: relative;
+`
+
 export const Input = styled.input`
+    color: black;
     max-width: 450px;
     width: 100%;
     border: 0;
-    padding: 1em;
+    padding: 10px 10px 0;
     box-sizing: border-box;
 
     @media (min-width: 1000px) {
@@ -40,6 +46,22 @@ export const Input = styled.input`
     }
 
 `
+
+export const Label = styled.label`
+    color: #8c8c8c;
+    position: absolute;
+    top: ${({ isLabelSmall }) => isLabelSmall ? "10%" : "50%"};
+    left: 10px;
+    transform: ${({ isLabelSmall }) => isLabelSmall ? "translateY(0%)" : "translateY(-50%)"};
+    font-size: ${({ isLabelSmall }) => isLabelSmall ? "0.75em" : "1em"};
+    font-weight: ${({ isLabelSmall }) => isLabelSmall ? "bold" : "normal"};
+    transition: all 0.1s ease;
+
+    &:hover {
+        cursor: text;
+    }
+`
+
 export const Button = styled.button`
     display: flex;
     align-items: center;
