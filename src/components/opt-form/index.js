@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from "react"
+import React from "react"
 
-import { Container, Text, Input, Button, Wrapper, Label } from "./styles/opt-form"
+import { Container, Text, Input, Button, InputLabelWrapper, FloatingLabel } from "./styles/opt-form"
 
 
 export default function OptForm({ children, ...restProps }) {
@@ -13,33 +13,18 @@ OptForm.Text = ({ children, ...restProps }) => {
     return <Text {...restProps}>{children}</Text>
 }
 
-OptForm.Input = function OptFormInput({ placeLabel, ...restProps }) {
-    
-    const [isLabelSmall, setIsLabelSmall] = useState(false)
-    const inputRef = useRef()
+OptForm.InputLabelWrapper = function OptFormInputLabelWrapper({ children, ...restProps }) {
+    return <InputLabelWrapper {...restProps}>{children}</InputLabelWrapper>
+}
 
-    useEffect(() => {
-        if (isLabelSmall) {
-            inputRef.current.focus()
-        }
-    }, [isLabelSmall])
+OptForm.Input = React.forwardRef(({ ...restProps }, ref) => {
+    return <Input ref={ref} {...restProps} />
+})
 
+OptForm.FloatingLabel = function OptFormFloatingLabel({ children, ...restProps }) {
     return (
-        <Wrapper>
-            <Input
-                ref={inputRef}
-                onFocus={() => setIsLabelSmall(true)}
-                onBlur={() => setIsLabelSmall(false)}
-                {...restProps}
-            />
-            <Label
-                onClick={() => setIsLabelSmall(true)}
-                isLabelSmall={isLabelSmall}
-            >
-                {placeLabel}
-            </Label>
-        </Wrapper>
-        )
+        <FloatingLabel {...restProps}>{children}</FloatingLabel>
+    )
 }
 
 OptForm.Button = ({ children, ...restProps }) => {

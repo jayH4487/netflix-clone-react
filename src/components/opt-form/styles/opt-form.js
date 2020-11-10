@@ -28,7 +28,7 @@ export const Text = styled.p`
     }
 `
 
-export const Wrapper = styled.div`
+export const InputLabelWrapper = styled.div`
     position: relative;
 `
 
@@ -47,7 +47,7 @@ export const Input = styled.input`
 
 `
 
-export const Label = styled.label`
+export const FloatingLabel = styled.label`
     color: #8c8c8c;
     position: absolute;
     top: ${({ isLabelSmall }) => isLabelSmall ? "10%" : "50%"};
