@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 
 import OptForm from "../components/opt-form"
 import Feature from "../components/feature"
@@ -6,6 +7,7 @@ import { HeaderContainer } from "../containers/header"
 import { JumbotronContainer } from "../containers/jumbotron"
 import { FaqsContainer } from "../containers/faqs"
 import { FooterContainer } from "../containers/footer"
+import * as ROUTES from "../constants/routes"
 
 
 export default function Home() {
@@ -13,6 +15,15 @@ export default function Home() {
     const [email, setEmail] = useState("")
     const [isLabelSmall, setIsLabelSmall] = useState(false)
     const inputRef = useRef()
+
+    const history = useHistory()
+
+    const handleClick = () => {
+        history.push({
+            pathname: ROUTES.SIGN_UP,
+            state: email
+        })
+    }
 
     useEffect(() => {
         if (isLabelSmall) {
@@ -44,7 +55,7 @@ export default function Home() {
                                 Email address
                             </OptForm.FloatingLabel>
                         </OptForm.InputLabelWrapper>
-                        <OptForm.Button>Get Started</OptForm.Button>
+                        <OptForm.Button onClick={handleClick}>Let's go</OptForm.Button>
                     </OptForm>
                 </Feature>
             </HeaderContainer>

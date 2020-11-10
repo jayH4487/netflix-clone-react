@@ -2,13 +2,13 @@ import React from "react"
 import { Route, Redirect } from "react-router-dom"
 
 
-export function IsUserRedirect({ user, loggedInPath, children, ...restProps }) {
+export function IsUserRedirect({ location, user, loggedInPath, children, ...restProps }) {
     return (
         <Route
             {...restProps}
             render={() => {
                 if (!user) {
-                    return children
+                    return React.cloneElement(children, {location: location})
                 }
                 if (user) {
                     return (

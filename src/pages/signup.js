@@ -7,11 +7,11 @@ import Form from "../components/form"
 import * as ROUTES from "../constants/routes"
 import { FirebaseContext } from '../context/firebase'
 
-export default function Signup() {
+export default function Signup({ location }) {
 
     const [error, setError] = useState("")
     const [firstName, setFirstName] = useState("")
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState(location.state || "")
     const [password, setPassword] = useState("")
 
     const { firebase } = useContext(FirebaseContext)
