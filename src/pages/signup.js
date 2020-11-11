@@ -50,21 +50,21 @@ export default function Signup({ location }) {
 
                     <Form.Base onSubmit={handleSignup} method="POST">
                         <Form.Input
-                            placeholder="First Name"
+                            placeLabel="First Name"
                             type="text"
                             name="firstName"
                             value={firstName}
                             onChange={({ target }) => setFirstName(target.value)}
                         />
                         <Form.Input
-                            placeholder="Email"
+                            placeLabel="Email"
                             type="email"
                             name="email"
                             value={email}
                             onChange={({ target }) => setEmail(target.value)}
                         />
                         <Form.Input
-                            placeholder="Password"
+                            placeLabel="Password"
                             type="password"
                             autoComplete="off"
                             name="password"

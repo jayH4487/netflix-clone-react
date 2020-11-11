@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useRef, useEffect } from "react"
 
 import { 
     Container, 
@@ -9,7 +9,9 @@ import {
     Text, 
     TextSmall, 
     Error, 
-    Link 
+    Link,
+    InputLabelWrapper,
+    FloatingLabel
 } from "./styles/form"
 
 
@@ -31,9 +33,33 @@ Form.Title = ({ children, ...restProps }) => {
     )
 }
 
-Form.Input = (props) => {
+Form.Input = function FormInput({ placeLabel, value, ...restProps }) {
+
+    const [isLabelSmall, setIsLabelSmall] = useState(false)
+    const inputRef = useRef()
+
+    useEffect(() => {
+        if (isLabelSmall) {
+            inputRef.current.focus()
+        }
+    }, [isLabelSmall])
+
     return (
-        <Input {...props} />
+        <InputLabelWrapper>
+            <Input
+                {...restProps}
+                ref={inputRef}
+                value={value}
+                onFocus={() => setIsLabelSmall(true)}
+                onBlur={() => setIsLabelSmall(value === "" ? false : true)} 
+            />
+            <FloatingLabel
+                onClick={() => setIsLabelSmall(true)}
+                isLabelSmall={isLabelSmall}
+            >
+                {placeLabel}
+            </FloatingLabel>
+        </InputLabelWrapper>
     )
 }
 

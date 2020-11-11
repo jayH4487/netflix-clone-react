@@ -45,14 +45,14 @@ export default function Signin() {
 
                     <Form.Base onSubmit={handleSignin} method="POST">
                         <Form.Input
-                            placeholder="Email"
+                            placeLabel="Email"
                             type="email"
                             name="email"
                             value={email}
                             onChange={({ target }) => setEmail(target.value)}
                         />
                         <Form.Input
-                            placeholder="Password"
+                            placeLabel="Password"
                             type="password"
                             autoComplete="off"
                             name="password"

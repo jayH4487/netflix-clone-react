@@ -26,17 +26,38 @@ export const Title = styled.h1`
     margin-bottom: 1.75em;
 `
 
+export const InputLabelWrapper = styled.div`
+    display: grid;
+    position: relative;
+
+    &:last-of-type {
+        margin-bottom: 2em;
+    }
+`
+
 export const Input = styled.input`
     background: #333;
     border: 0;
     border-radius: 4px;
     color: white;
-    padding: 0.4em 1em;
+    padding: 10px 10px 0;
     height: 3.125em;
     margin-bottom: 1em;
 
-    &:last-of-type {
-        margin-bottom: 2em;
+`
+
+export const FloatingLabel = styled.label`
+    color: #8c8c8c;
+    position: absolute;
+    top: ${({ isLabelSmall }) => isLabelSmall ? "10%" : "50%"};
+    left: 10px;
+    transform: ${({ isLabelSmall }) => isLabelSmall ? "translateY(0%)" : "translateY(-75%)"};
+    font-size: ${({ isLabelSmall }) => isLabelSmall ? "0.75em" : "1em"};
+    font-weight: ${({ isLabelSmall }) => isLabelSmall ? "bold" : "normal"};
+    transition: all 0.1s ease;
+
+    &:hover {
+        cursor: text;
     }
 `
 
