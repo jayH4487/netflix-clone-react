@@ -30,12 +30,13 @@ export const Text = styled.p`
 
 export const InputLabelWrapper = styled.div`
     position: relative;
+    min-width: 450px;
 `
 
 export const Input = styled.input`
     color: black;
-    max-width: 450px;
     width: 100%;
+    height: 48px;
     border: 0;
     padding: 10px 10px 0;
     box-sizing: border-box;
@@ -65,23 +66,19 @@ export const FloatingLabel = styled.label`
 export const Button = styled.button`
     display: flex;
     align-items: center;
-    font-weight: bold;
-    text-transform: uppercase;
     background: #e50914;
+    width: auto;
+    min-height: 40px;
     color: white;
-    padding: 1em 2.5em;
+    padding: 0 1em;
     margin-top: 1em;
     border: 0;
     cursor: pointer;
     
     img {
-        margin-left: 10px;
+        margin-left: 0.625em;
         filter: brightness(0) invert(1);
         width: 1em;
-        
-        @media (min-width: 1000px) {
-            width: 1.5em;
-        }
     }
 
     &:hover {
