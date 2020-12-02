@@ -30,7 +30,7 @@ export const Text = styled.p`
 
 export const InputLabelWrapper = styled.div`
     position: relative;
-    min-width: 450px;
+    min-width: 350px;
 `
 
 export const Input = styled.input`
